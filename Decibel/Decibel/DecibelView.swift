@@ -10,12 +10,13 @@ import AVFoundation
 
 struct DecibelView: View {
     @StateObject private var soundMeter = SoundMeter()
-    @State private var limit: Float = 90.0 // 예시 80
+    @State private var limit: Float = 70.0 // 예시 80
     @State private var isCompleted = false
     @State private var progressViewTintColor: Color = .blue
 
     var body: some View {
         VStack {
+            Text("70dB까지 소리지르기")
             Text(soundMeter.decibels + 100 >= limit ? "성공" : String(format: "%.2f dB", soundMeter.decibels + 100) )
                 .font(.title)
                 .foregroundColor(isCompleted ? .red : .blue)
