@@ -57,15 +57,6 @@ struct DecibelView: View {
     }
 }
 
-extension DecibelView {
-    
-    private func changeToPercentage(_ decibel: Float) -> Float {
-        let a = (decibel/limit) / 10
-        print(soundMeter.decibels, a)
-        return a
-    }
-}
-
 struct DecibelView_Previews: PreviewProvider {
     static var previews: some View {
         DecibelView()
