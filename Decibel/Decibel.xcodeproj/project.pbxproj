@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABA6D3FB2A0FDFA60039BE8D /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6D3FA2A0FDFA60039BE8D /* CircularProgressView.swift */; };
 		ABB2831C2A0E8C95003665B9 /* DecibelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2831B2A0E8C95003665B9 /* DecibelApp.swift */; };
 		ABB2831E2A0E8C95003665B9 /* DecibelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB2831D2A0E8C95003665B9 /* DecibelView.swift */; };
 		ABB283202A0E8C96003665B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABB2831F2A0E8C96003665B9 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ABA6D3FA2A0FDFA60039BE8D /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		ABB283182A0E8C95003665B9 /* Decibel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Decibel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB2831B2A0E8C95003665B9 /* DecibelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecibelApp.swift; sourceTree = "<group>"; };
 		ABB2831D2A0E8C95003665B9 /* DecibelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecibelView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				ABB283212A0E8C96003665B9 /* Preview Content */,
 				ABB283292A0E8E11003665B9 /* PermissionManager.swift */,
 				ABB2832B2A0E9670003665B9 /* SoundMeter.swift */,
+				ABA6D3FA2A0FDFA60039BE8D /* CircularProgressView.swift */,
 			);
 			path = Decibel;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				ABB2832C2A0E9670003665B9 /* SoundMeter.swift in Sources */,
 				ABB2832E2A0E96B2003665B9 /* PreviousView.swift in Sources */,
 				ABB2831C2A0E8C95003665B9 /* DecibelApp.swift in Sources */,
+				ABA6D3FB2A0FDFA60039BE8D /* CircularProgressView.swift in Sources */,
 				ABB2832A2A0E8E11003665B9 /* PermissionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

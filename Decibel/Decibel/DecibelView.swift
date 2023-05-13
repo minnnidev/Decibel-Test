@@ -10,28 +10,42 @@ import AVFoundation
 
 struct DecibelView: View {
     @StateObject private var soundMeter = SoundMeter()
-    @State private var limit: Float = 70.0 // 예시 80
+    @State private var limit: Float = 40.0 // 예시 70
     @State private var isCompleted = false
     @State private var progressViewTintColor: Color = .blue
 
     var body: some View {
         VStack {
-            Text("70dB까지 소리지르기")
-            Text(soundMeter.decibels + 100 >= limit ? "성공" : String(format: "%.2f dB", soundMeter.decibels + 100) )
-                .font(.title)
-                .foregroundColor(isCompleted ? .red : .blue)
-                .padding()
-            
-            ProgressView(value: min(soundMeter.decibels + 100, limit), total: limit)
-                .tint(progressViewTintColor)
-                .padding([.leading, .trailing], 30)
-                .onChange(of: soundMeter.decibels + 100) { newValue in
-                    if newValue >= limit {
-                        progressViewTintColor = .red
-                        isCompleted = true
-                        soundMeter.stop()
+            Text("콧바람 장풍 불기 💨")
+                .padding(.bottom, 20)
+            ZStack {
+                Circle()
+                    .stroke(lineWidth: 20.0)
+                    .foregroundColor(Color(.systemGray5))
+                Circle()
+                    .trim(from: 0.0, to: CGFloat(soundMeter.decibels/limit))
+                    .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
+                    .foregroundColor(
+                        (soundMeter.decibels/limit) <= 0.5 ? .green : (soundMeter.decibels/limit) >= 0.7 ? .red : .yellow
+                    )
+                    .rotationEffect(.degrees(270))
+                    .animation(.linear, value: soundMeter.decibels/limit)
+                    .onReceive(soundMeter.$decibels) { decibels in
+                        if decibels >= limit {
+                            withAnimation {
+                                isCompleted = true
+                                soundMeter.stop()
+                            }
+                        }
                     }
-                }
+            }
+            .frame(width: 200, height: 200)
+            
+            Text(
+                (soundMeter.decibels/limit) <= 0.3 ? "부족해요" : (soundMeter.decibels/limit) >= 0.7 ? "완료" : "조금 더 세게 불어봐여"
+            )
+            .padding(.top, 20)
+            .font(.system(size: 30))
         }
         .onAppear {
             try? soundMeter.start()
@@ -40,6 +54,15 @@ struct DecibelView: View {
             soundMeter.stop()
             soundMeter.decibels = 0.0
         }
+    }
+}
+
+extension DecibelView {
+    
+    private func changeToPercentage(_ decibel: Float) -> Float {
+        let a = (decibel/limit) / 10
+        print(soundMeter.decibels, a)
+        return a
     }
 }
 

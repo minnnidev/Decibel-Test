@@ -35,7 +35,7 @@ class SoundMeter: ObservableObject {
             }
             
             DispatchQueue.main.async {
-                self.decibels = decibels
+                self.decibels = self.normalizeDecibel(decibels)
             }
         }
     }
@@ -49,6 +49,16 @@ class SoundMeter: ObservableObject {
         engine.stop()
         playerNode.stop()
         engine.inputNode.removeTap(onBus: 0)
+    }
+    
+    private func normalizeDecibel(_ decibel: Float) -> Float {
+        let low: Float = -60.0
+        let high: Float = 0.0
+        
+        var level = max(0.0, decibel - low)
+        level = min(level, high - low)
+        
+        return level
     }
 }
 
